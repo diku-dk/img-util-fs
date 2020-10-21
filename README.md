@@ -13,12 +13,13 @@ Linux, macOS, and Windows.
 
 The library API is available in the file [img_util.fsi](img_util.fsi).
 
-## Example compilation and use of the library
+## Compilation and use using `make` on macOS
 
 To compile and run an example program without using `make`, see the
-section titled "Compilation without using make" below. Before you
-start, be sure that you have the mono-mdk framework installed. On
-macOS, mono-mdk can be installed as follows, using `brew`:
+below sections titled ''Compilation and use on macOS and Linux'' and
+''Compilation and use on Windows 10''.
+
+Under macOS, make sure you have the `mono-mdk` version of Mono installed:
 
     $ brew install mono-mdk
 
@@ -36,7 +37,8 @@ in the present directory:
 
     $ make img_util.dll
 
-If you are not on macOS, you probably need to adjust the Makefile or build the DLL without using make, as described below.
+If you are not on macOS, you probably need to adjust the `Makefile` or
+build the DLL without using `make`, as described below.
 
 ## Examples
 
@@ -67,7 +69,9 @@ Here is an overview of the examples.
 
     $ make turtle.exe && mono turtle.exe
 
-## Compilation without using make
+## Compilation and use on Linux and macOS
+
+#### Creating `img_util.dll`
 
 First copy the two files `img_util.fsi` and `img_util.fs` to a local
 directory. Then, in a terminal, execute the following command:
@@ -77,15 +81,40 @@ directory. Then, in a terminal, execute the following command:
 This command should produce the file `img_util.dll`, which should now
 be available in the present directory.
 
-Now, to compile and run the Spiral example, for example, copy the
-file `spiral.fs` to the present directory and execute the commands:
+#### Using `img_util.dll`
+
+To compile and run the Spiral example, for example, place the files `img_util.dll` and `spiral.fs` in the same directory and execute the commands:
 
     $ fsharpc --nologo -r img_util.dll spiral.fs
     $ mono spiral.exe
 
-You should now be able to find an open window showing a spiral (under
+The last command should lauch a window showing a spiral (under
 macOS, you may need to hit Command-Tab a couple of times to select the
 newly opened window).
+
+## Compilation and use on Windows 10
+
+#### Creating `img_util.dll`
+
+First copy the two files `img_util.fsi` and `img_util.fs` to a local
+directory.
+
+For 32-bit Mono, which contains the GTK bindings, execute the following command:
+
+    $ fsharpc --nologo -I "c:/Program Files (x86)/Mono/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
+
+For 64-bit Mono, which requires a separate installation of GTK, execute the following command:
+
+    $ fsharpc --nologo -I "c:/Program Files (x86)/GtkSharp/2.12/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
+
+#### Using `img_util.dll`
+
+To compile and run the Spiral example, for example, place the files `img_util.dll` and `spiral.fs` in the same directory and execute the commands:
+
+    $ fsharpc --nologo -r img_util.dll spiral.fs
+    $ mono spiral.exe
+
+The last command should launch a window showing a spiral.
 
 ## License
 
@@ -93,4 +122,11 @@ MIT license
 
 ## Copyright
 
-Copyright 2020 - Martin Elsman
+Copyright 2018-2020 - Martin Elsman
+
+## Contributions
+
+The following individuals have contributed to the ImgUtil library:
+
+- Mads Dyrvig Obitsø Thomsen
+- Jan Rolandsen
