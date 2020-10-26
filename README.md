@@ -16,7 +16,7 @@ The library API is available in the file [img_util.fsi](img_util.fsi).
 ## Compilation and use using `make` on macOS
 
 To compile and run an example program without using `make`, see the
-below sections titled ''Compilation and use on macOS and Linux'' and
+below sections titled ''Compilation and use on macOS'', 'Compilation and use on Linux'', and
 ''Compilation and use on Windows 10''.
 
 Under macOS, make sure you have the `mono-mdk` version of Mono installed:
@@ -88,9 +88,9 @@ To compile and run the Spiral example, for example, place the files `img_util.dl
     $ fsharpc --nologo -r img_util.dll spiral.fs
     $ mono spiral.exe
 
-The last command should lauch a window showing a spiral (under
-macOS, you may need to hit Command-Tab a couple of times to select the
-newly opened window).
+The last command should launch a window showing a spiral (you may need
+to hit Command-Tab a couple of times to select the newly opened
+window).
 
 
 ## Compilation and use on Linux
@@ -117,7 +117,7 @@ The last command will run your program.
 
 #### Creating `img_util.dll`
 
-First copy the two files `img_util.fsi` and `img_util.fs` to a local
+First, copy the two files `img_util.fsi` and `img_util.fs` to a local
 directory.
 
 For 32-bit Mono, which contains the GTK bindings, execute the following command:
