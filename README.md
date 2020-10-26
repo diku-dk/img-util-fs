@@ -69,7 +69,7 @@ Here is an overview of the examples.
 
     $ make turtle.exe && mono turtle.exe
 
-## Compilation and use on Linux and macOS
+## Compilation and use on macOS
 
 #### Creating `img_util.dll`
 
@@ -91,6 +91,27 @@ To compile and run the Spiral example, for example, place the files `img_util.dl
 The last command should lauch a window showing a spiral (under
 macOS, you may need to hit Command-Tab a couple of times to select the
 newly opened window).
+
+
+## Compilation and use on Linux
+
+#### Creating `img_util.dll`
+
+Clone this repo to your computer and navigate into 'img-util-fs/', then write the following:
+
+    $ make img_util.dll
+
+This command should produce the file `img_util.dll`, which should now
+be available in the 'img-util-fs' directory.
+
+#### Using `img_util.dll`
+
+To compile and run your program (eg. foo.fsx) place your file in the img-util-fs directory. Then write the following:
+
+    $ make foo.exe
+    $ mono foo.exe
+
+The last command will run your program.
 
 ## Compilation and use on Windows 10
 
