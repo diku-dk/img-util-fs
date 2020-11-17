@@ -9,6 +9,9 @@ images. The library, which is based on Mono and Gtk, is portable, in
 the sense that applications built using the library can execute on
 Linux, macOS, and Windows.
 
+NOTICE: A mini-version of the library (with limited functionality) is
+available in the `mini/` folder.
+
 ## The API
 
 The library API is available in the file [img_util.fsi](img_util.fsi).
