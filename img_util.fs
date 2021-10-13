@@ -122,12 +122,20 @@ let runApp (t:string) (w:int) (h:int)
                                           e.RetVal <- true))
          let state = ref s
          let drawing = new Gtk.DrawingArea()
+         let pm_ref = ref(w,h,new Gdk.Pixmap(null, w, h, 24))
+         let get_pm (w,h) =
+           let (w0,h0,pm) = !pm_ref
+           in if w <= w0 && h <= h0 then pm
+              else (pm.Dispose();
+                    let pm = new Gdk.Pixmap(null, w, h, 24)
+                    in pm_ref := (w,h,pm); pm)
+
          let draw () =
            let gc = drawing.Style.BaseGC(StateType.Normal)
            let (w,h) = window.GetSize()
            let C = f w h (!state)
+           let pm = get_pm (w,h)
            use pb = toPixbuf C
-           use pm = new Gdk.Pixmap(null, w, h, 24)
            in (pb.RenderToDrawable(pm,gc,0,0,0,0,w,h,Gdk.RgbDither.None,0,0);
                drawing.GdkWindow.DrawDrawable(gc,pm,0,0,0,0,-1,-1);
                gc.Dispose()
@@ -138,7 +146,7 @@ let runApp (t:string) (w:int) (h:int)
                                            | Gdk.Key.Escape -> Application.Quit()
                                            | k -> (match onKeyDown (!state) k with
                                                    | Some s -> (state := s;
-                                                                window.QueueDraw())
+                                                                draw())  (* was: QueueDraw *)
                                                    | None -> ())
                                      );
              window.Add(drawing);
