@@ -1,9 +1,14 @@
+# Detect os to set $INCL correctly
+UNAME_S := $(shell uname -s)
+ifneq (,$(wildcard /etc/arch-release))
+    INCL=-I /usr/lib/mono/gtk-sharp-2.0
+else ifeq ($(UNAME_S),Linux)
+    INCL=-I /usr/lib/cli/gtk-sharp-2.0 -I /usr/lib/cli/gdk-sharp-2.0 -I /usr/lib/cli/glib-sharp-2.0 -I /usr/lib/cli/gtk-dotnet-2.0 -I /usr/lib/cli/atk-sharp-2.0
+else ifeq ($(UNAME_S),Darwin)
+    INCL=-I /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/gtk-sharp-2.0
+endif
 
 FSC=fsharpc --nologo
-#macOS:
-INCL=-I /Library/Frameworks/Mono.framework/Versions/Current/lib/mono/gtk-sharp-2.0
-#Linux:
-#INCL=-I /usr/lib/cli/gtk-sharp-2.0 -I /usr/lib/cli/gdk-sharp-2.0 -I /usr/lib/cli/glib-sharp-2.0 -I /usr/lib/cli/gtk-dotnet-2.0 -I /usr/lib/cli/atk-sharp-2.0
 GTKDLLS=-r gdk-sharp.dll -r gtk-sharp.dll
 
 .PHONY: all
