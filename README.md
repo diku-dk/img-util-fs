@@ -132,8 +132,7 @@ which contains the GTK bindings, execute the following command:
 For [64-bit
 Mono](https://www.mono-project.com/download/stable/#download-win),
 which requires a separate installation of GTK (also available from the
-[mono-project
-site](https://www.mono-project.com/download/stable/#download-win)),
+[mono download-page](https://www.mono-project.com/download/stable/#download-win)),
 execute the following command:
 
     $ fsharpc --nologo -I "c:/Program Files (x86)/GtkSharp/2.12/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
