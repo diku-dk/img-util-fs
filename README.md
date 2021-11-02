@@ -144,9 +144,9 @@ To compile and run the Spiral example, for example, place the files `img_util.dl
     $ fsharpc --nologo -r img_util.dll spiral.fs
     $ mono spiral.exe
 
-The last command assumes that the PATH environment variable has been
+The last command assumes that the `PATH` environment variable has been
 updated to link to the proper `gtk-sharp-2.0` folder, which contains
-the files `gdk-sharp.dll' and 'gtk-sharp.dll. Under those assumptions,
+the files `gdk-sharp.dll` and `gtk-sharp.dll`. Under those assumptions,
 the last command should launch a window showing a spiral.
 
 ## License
