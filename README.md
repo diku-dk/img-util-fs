@@ -116,18 +116,25 @@ To compile and run your program (eg. foo.fsx) place your file in the img-util-fs
 
 The last command will run your program.
 
-## Compilation and use on Windows 10
+## Compilation and use on Windows 1X
 
 #### Creating `img_util.dll`
 
 First, copy the two files `img_util.fsi` and `img_util.fs` to a local
 directory.
 
-For 32-bit Mono, which contains the GTK bindings, execute the following command:
+For [32-bit
+Mono](https://www.mono-project.com/download/stable/#download-win),
+which contains the GTK bindings, execute the following command:
 
     $ fsharpc --nologo -I "c:/Program Files (x86)/Mono/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
 
-For 64-bit Mono, which requires a separate installation of GTK, execute the following command:
+For [64-bit
+Mono](https://www.mono-project.com/download/stable/#download-win),
+which requires a separate installation of GTK (also available from the
+[mono-project
+site](https://www.mono-project.com/download/stable/#download-win)),
+execute the following command:
 
     $ fsharpc --nologo -I "c:/Program Files (x86)/GtkSharp/2.12/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
 
@@ -138,7 +145,10 @@ To compile and run the Spiral example, for example, place the files `img_util.dl
     $ fsharpc --nologo -r img_util.dll spiral.fs
     $ mono spiral.exe
 
-The last command should launch a window showing a spiral.
+The last command assumes that the PATH environment variable has been
+updated to link to the proper `gtk-sharp-2.0` folder, which contains
+the files `gdk-sharp.dll' and 'gtk-sharp.dll. Under those assumptions,
+the last command should launch a window showing a spiral.
 
 ## License
 
