@@ -118,36 +118,44 @@ The last command will run your program.
 
 ## Compilation and use on Windows 1X
 
+On Windows (32-bit or 64-bit), ImgUtil works only with [32-bit
+Mono](https://www.mono-project.com/download/stable/#download-win),
+thus, you must install [32-bit
+Mono](https://www.mono-project.com/download/stable/#download-win) on
+your system if you have not already done so. It is safe to have both
+the 64-bit version and the 32-bit version installed at the same time.
+
+When installing the 32-bit version of mono, an application called "Open Mono x86 Command
+Prompt" is installed as well, and, it is important that when using the
+ImgUtil library, you are working from within this "Command Prompt"; it
+takes care of setting the `PATH` environment variable properly.
+
 #### Creating `img_util.dll`
 
-First, copy the two files `img_util.fsi` and `img_util.fs` to a local
-directory.
+From within the "Open Mono x86 Command Prompt", change directory to the
+directory holding the `img-util-fs` content.
 
-For [32-bit
-Mono](https://www.mono-project.com/download/stable/#download-win),
-which contains the GTK bindings, execute the following command:
+Now execute the following command:
 
-    $ fsharpc --nologo -I "c:/Program Files (x86)/Mono/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
+    fsharpc --nologo -I "c:/Program Files (x86)/Mono/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
 
-For [64-bit
-Mono](https://www.mono-project.com/download/stable/#download-win),
-which requires a separate installation of GTK (also available from the
-[mono download-page](https://www.mono-project.com/download/stable/#download-win)),
-execute the following command:
-
-    $ fsharpc --nologo -I "c:/Program Files (x86)/GtkSharp/2.12/lib/gtk-sharp-2.0" -r gdk-sharp.dll -r gtk-sharp.dll -a img_util.fsi img_util.fs
+The above command should create the file `img_util.dll`.
 
 #### Using `img_util.dll`
 
-To compile and run the Spiral example, for example, place the files `img_util.dll` and `spiral.fs` in the same directory and execute the commands:
+To compile and run the Spiral example, for example, place the files
+`img_util.dll` and `spiral.fs` in the same directory, for example by
+copying `img_util.dll` to the folder `examples`:
 
-    $ fsharpc --nologo -r img_util.dll spiral.fs
-    $ mono spiral.exe
+    copy img_util.dll examples\
+	cd examples
 
-The last command assumes that the `PATH` environment variable has been
-updated to link to the proper `gtk-sharp-2.0` folder, which contains
-the files `gdk-sharp.dll` and `gtk-sharp.dll`. Under those assumptions,
-the last command should launch a window showing a spiral.
+You should now be able to compile and run the Spiral example:
+
+    fsharpc --nologo -r img_util.dll spiral.fs
+    mono spiral.exe
+
+The last command should launch a window showing a spiral.
 
 ## License
 
@@ -155,7 +163,7 @@ MIT license
 
 ## Copyright
 
-Copyright 2018-2020 - Martin Elsman
+Copyright 2018-2021 - Martin Elsman
 
 ## Contributions
 
