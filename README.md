@@ -98,6 +98,13 @@ window).
 
 ## Compilation and use on Linux
 
+#### Requirements
+
+Before compiling this library make sure that you have Gtk# installed. On Ubuntu and Debian this is done with the command:
+
+    $ sudo apt-get install gtk-sharp2
+
+
 #### Creating `img_util.dll`
 
 Clone this repo to your computer and navigate into 'img-util-fs/', then write the following:
